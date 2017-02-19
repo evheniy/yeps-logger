@@ -26,6 +26,12 @@ describe('YEPS logger test', () => {
         router = new Router();
     });
 
+    afterEach(() => {
+        app.then(async ctx => {
+            ctx.logger.restore();
+        });
+    });
+
     it('should test access from middleware', async () => {
         let isTestFinished1 = false;
         let isTestFinished2 = false;
@@ -36,8 +42,6 @@ describe('YEPS logger test', () => {
 
             ctx.res.writeHead(200);
             ctx.res.end('test');
-        }).then(async ctx => {
-            ctx.logger.restore;
         });
 
         await chai.request(http.createServer(app.resolve()))
@@ -67,9 +71,7 @@ describe('YEPS logger test', () => {
 
         app.then(
             router.resolve()
-        ).then(async ctx => {
-            ctx.logger.restore;
-        });
+        );
 
         await chai.request(http.createServer(app.resolve()))
             .get('/')
@@ -89,8 +91,6 @@ describe('YEPS logger test', () => {
 
         app.then(async () => {
             throw new Error('test');
-        }).then(async ctx => {
-            ctx.logger.restore;
         });
 
         await chai.request(http.createServer(app.resolve()))
