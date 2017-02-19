@@ -69,9 +69,7 @@ describe('YEPS logger test', () => {
             ctx.res.end('test');
         });
 
-        app.then(
-            router.resolve()
-        );
+        app.then(router.resolve());
 
         await chai.request(http.createServer(app.resolve()))
             .get('/')
