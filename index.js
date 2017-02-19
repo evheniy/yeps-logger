@@ -27,4 +27,9 @@ module.exports = () => async context => {
         debug(err);
         ctx.logger.error(err);
     });
+
+    context.app.then(async ctx => {
+        debug('Register request logger');
+        ctx.logger.info(ctx.req.url);
+    });
 };

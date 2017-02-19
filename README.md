@@ -1,7 +1,5 @@
-# YEPS logger
+# YEPS async logger
 
-
-Async logger for YEPS - winston
 
 [![NPM](https://nodei.co/npm/yeps-logger.png)](https://npmjs.org/package/yeps-logger)
 
@@ -77,10 +75,14 @@ Run app (node.js > 7.0.0):
 
 ## Links
 
-* [yeps](https://github.com/evheniy/yeps)
-* [yeps-router](https://github.com/evheniy/yeps-router)
-* [yeps-error](https://github.com/evheniy/yeps-error)
-* [winston](https://github.com/winstonjs/winston)
-* [config](https://github.com/lorenwest/node-config)
+* [yeps](https://github.com/evheniy/yeps) - YEPS
+* [yeps-promisify](https://github.com/evheniy/yeps-promisify) - YEPS kernel
+* [yeps-benchmark](https://github.com/evheniy/yeps-benchmark) - performance comparison koa2, express and node http
+* [yeps-router](https://github.com/evheniy/yeps-router) - YEPS promise based router
+* [yeps-error](https://github.com/evheniy/yeps-error) - YEPS 404/500 error handler
+* [yeps-redis](https://github.com/evheniy/yeps-redis) - YEPS promise based redis client
+* [yeps-boilerplate](https://github.com/evheniy/yeps-boilerplate) - YEPS app boilerplate
+* [winston](https://github.com/winstonjs/winston) - logger
+* [config](https://github.com/lorenwest/node-config) - node.js config
      
      
