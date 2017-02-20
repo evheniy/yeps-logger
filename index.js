@@ -25,7 +25,9 @@ module.exports = () => async context => {
     context.app.catch(async (err, ctx) => {
         debug('Register 500 error handler');
         debug(err);
-        ctx.logger.error(err);
+        if (err) {
+            ctx.logger.error(err);
+        }
     });
 
     context.app.then(async ctx => {

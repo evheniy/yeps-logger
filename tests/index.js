@@ -103,4 +103,23 @@ describe('YEPS logger test', () => {
         expect(isTestFinished).is.true;
     });
 
+    it('should test middleware with resolve', async () => {
+        let isTestFinished = false;
+
+        app.then(async () => {
+            return Promise.resolve();
+        });
+
+        await chai.request(http.createServer(app.resolve()))
+            .get('/')
+            .send()
+            .catch(err => {
+                expect(err).to.have.status(404);
+                expect(err.message).to.be.equal('Not Found');
+                isTestFinished = true;
+            });
+
+        expect(isTestFinished).is.true;
+    });
+
 });
