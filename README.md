@@ -82,6 +82,7 @@ Run app (node.js > 7.0.0):
 * [yeps-error](https://github.com/evheniy/yeps-error) - YEPS 404/500 error handler
 * [yeps-redis](https://github.com/evheniy/yeps-redis) - YEPS promise based redis client
 * [yeps-boilerplate](https://github.com/evheniy/yeps-boilerplate) - YEPS app boilerplate
+* [yeps-express-wrapper](https://github.com/evheniy/yeps-express-wrapper) - YEPS express wrapper
 * [winston](https://github.com/winstonjs/winston) - logger
 * [config](https://github.com/lorenwest/node-config) - node.js config
      
