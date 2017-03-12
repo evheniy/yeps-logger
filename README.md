@@ -26,6 +26,24 @@
   
 ## How to use
 
+### Config
+
+config/default.json
+
+    {
+      "logger": {
+        "filename": "./logs/app.error.log",
+        "json": true,
+        "timestamp": true,
+        "logstash": true,
+        "showLevel": true,
+        "maxsize": 10000000,
+        "maxFiles": 5
+      }
+    }
+    
+### Middleware
+
 app.js
 
     const http = require('http');
@@ -49,29 +67,21 @@ app.js
     
     app.then(router.resolve());
     
-    http.
-        createServer(app.resolve()).
-        listen(parseInt(process.env.PORT || '3000', 10));
+    http
+        .createServer(app.resolve())
+        .listen(parseInt(process.env.PORT || '3000', 10));
         
-config/default.json
-
-    {
-      "logger": {
-        "filename": "./logs/app.error.log",
-        "json": true,
-        "timestamp": true,
-        "logstash": true,
-        "showLevel": true,
-        "maxsize": 10000000,
-        "maxFiles": 5
-      }
-    }
-
-
 Run app (node.js > 7.6.0):
 
     node app.js
+        
+### In module
+
+    const logger = require('yeps-logger/logger');
     
+    logger.info('test');
+    logger.error(new Error('test'));
+
 
 ## Links
 
@@ -81,6 +91,7 @@ Run app (node.js > 7.6.0):
 * [yeps-router](https://github.com/evheniy/yeps-router) - YEPS promise based router
 * [yeps-error](https://github.com/evheniy/yeps-error) - YEPS 404/500 error handler
 * [yeps-redis](https://github.com/evheniy/yeps-redis) - YEPS promise based redis client
+* [yeps-mysql](https://github.com/evheniy/yeps-mysql) - YEPS promise based mysql client
 * [yeps-boilerplate](https://github.com/evheniy/yeps-boilerplate) - YEPS app boilerplate
 * [yeps-express-wrapper](https://github.com/evheniy/yeps-express-wrapper) - YEPS express wrapper
 * [winston](https://github.com/winstonjs/winston) - logger
