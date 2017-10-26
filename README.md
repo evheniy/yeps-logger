@@ -62,6 +62,7 @@ config/default.json
     const logger = require('yeps-logger/logger');
     
     logger.info('test');
+    
     logger.error(new Error('test'));
 
 
