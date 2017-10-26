@@ -69,7 +69,7 @@ config/default.json
 #### [YEPS documentation](http://yeps.info/)
 
 
-### Dependencies:
+#### Dependencies:
 
 * [winston](https://github.com/winstonjs/winston) - logger
 * [config](https://github.com/lorenwest/node-config) - node.js config
