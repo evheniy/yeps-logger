@@ -22,7 +22,7 @@
 
 ## How to install
 
-  npm i -S yeps-logger
+    npm i -S yeps-logger
   
 ## How to use
 
