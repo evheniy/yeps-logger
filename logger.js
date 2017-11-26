@@ -7,11 +7,11 @@ const transports = [];
 debug(`process.env.NODE_ENV: ${process.env.NODE_ENV}`);
 
 if (process.env.NODE_ENV === 'production') {
-  debug('File');
+  debug('File logger');
 
   transports.push(new winston.transports.File(Object.assign({ level: 'error' }, config.logger)));
 } else {
-  debug('Console');
+  debug('Console logger');
 
   transports.push(new (winston.transports.Console)({
     level: 'info',

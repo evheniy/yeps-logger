@@ -28,7 +28,7 @@
 
 ### Config
 
-config/default.json
+#### config/default.json
 
     {
       "logger": {

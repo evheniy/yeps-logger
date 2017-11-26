@@ -55,6 +55,53 @@ describe('YEPS logger test', () => {
     expect(isTestFinished2).is.true;
   });
 
+  it('should ru 3 times', async () => {
+    let isTestFinished1 = false;
+    let isTestFinished2 = false;
+    let isTestFinished3 = false;
+    let isTestFinished4 = false;
+
+    app.then(async (ctx) => {
+      expect(ctx.logger).is.not.undefined;
+      isTestFinished1 = true;
+
+      ctx.res.statusCode = 200;
+      ctx.res.end('test');
+    });
+
+    await chai.request(server)
+      .get('/')
+      .send()
+      .then((res) => {
+        expect(res).to.have.status(200);
+        expect(res.text).to.be.equal('test');
+        isTestFinished2 = true;
+      });
+
+    await chai.request(server)
+      .get('/')
+      .send()
+      .then((res) => {
+        expect(res).to.have.status(200);
+        expect(res.text).to.be.equal('test');
+        isTestFinished3 = true;
+      });
+
+    await chai.request(server)
+      .get('/')
+      .send()
+      .then((res) => {
+        expect(res).to.have.status(200);
+        expect(res.text).to.be.equal('test');
+        isTestFinished4 = true;
+      });
+
+    expect(isTestFinished1).is.true;
+    expect(isTestFinished2).is.true;
+    expect(isTestFinished3).is.true;
+    expect(isTestFinished4).is.true;
+  });
+
   it('should test access from router', async () => {
     let isTestFinished1 = false;
     let isTestFinished2 = false;
@@ -118,7 +165,7 @@ describe('YEPS logger test', () => {
     expect(isTestFinished).is.true;
   });
 
-  it('should test storage ifo', async () => {
+  it('should test storage info', async () => {
     let isTestFinished = false;
 
     const { write } = process.stdout;
