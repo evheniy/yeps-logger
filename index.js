@@ -1,7 +1,6 @@
 const debug = require('debug')('yeps:logger');
-const logger = require('./logger');
 
-module.exports = () => async (context) => {
+module.exports = (logger = console) => async (context) => {
   debug('Logger creating...');
 
   context.logger = logger;
@@ -14,7 +13,7 @@ module.exports = () => async (context) => {
     context.app.then(async (ctx) => {
       debug('Running user error logger...');
 
-      ctx.logger.info(ctx.req.url);
+      ctx.logger.warn(ctx.req.url);
     });
   }
 

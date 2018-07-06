@@ -22,56 +22,40 @@
 
 ## How to install
 
-    npm i -S yeps-logger
+    npm i -S yeps-logger debug
   
 ## How to use
-
-### Config
-
-#### config/default.json
-
-    {
-      "logger": {
-        "filename": "./logs/app.error.log",
-        "json": true,
-        "timestamp": true,
-        "logstash": true,
-        "showLevel": true,
-        "maxsize": 10000000,
-        "maxFiles": 5
-      }
-    }
     
 ### Middleware
 
-    const App = require('yeps');
+```javascript
+const App = require('yeps');
     
-    const logger = require('yeps-logger');
-    const error = require('yeps-error');
+const logger = require('yeps-logger');
+const error = require('yeps-error');
     
-    const app = new App();
-    
-    app.all([
-        error(),
-        logger(),
-    ]);
-    
-        
-### In module
+const app = new App();
 
-    const logger = require('yeps-logger/logger');
-    
-    logger.info('test');
-    
-    logger.error(new Error('test'));
+app.all([
+  error(),
+  logger(),
+]);
+```
+
+You can use any system for logging.
+By default it's console.
+
+```javascript
+const log4js = require('log4js');
+
+app.all([
+  logger(log4js),
+]);
+```
+
+Try:
+* [log4js](https://www.npmjs.com/package/log4js)
+* [winston](https://github.com/winstonjs/winston)
 
 
 #### [YEPS documentation](http://yeps.info/)
-
-
-#### Dependencies:
-
-* [winston](https://github.com/winstonjs/winston) - logger
-* [config](https://github.com/lorenwest/node-config) - node.js config
-     
-     
