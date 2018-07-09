@@ -9,7 +9,9 @@ const logger = require('..');
 
 const { expect } = chai;
 
-axios.defaults.host = 'http://localhost:3000';
+const host = `http://localhost:${process.env.PORT || '3000'}`;
+
+axios.defaults.host = host;
 axios.defaults.adapter = httpAdapter;
 
 let app;
@@ -50,7 +52,7 @@ describe('YEPS logger test', () => {
       ctx.res.end('test');
     });
 
-    await axios.get('http://localhost:3000/')
+    await axios.get(host)
       .then(({ data: body, status }) => {
         expect(status).to.be.equal(200);
         expect(body).to.be.equal('test');
@@ -75,21 +77,21 @@ describe('YEPS logger test', () => {
       ctx.res.end('test');
     });
 
-    await axios.get('http://localhost:3000/')
+    await axios.get(host)
       .then(({ data: body, status }) => {
         expect(status).to.be.equal(200);
         expect(body).to.be.equal('test');
         isTestFinished2 = true;
       });
 
-    await axios.get('http://localhost:3000/')
+    await axios.get(host)
       .then(({ data: body, status }) => {
         expect(status).to.be.equal(200);
         expect(body).to.be.equal('test');
         isTestFinished3 = true;
       });
 
-    await axios.get('http://localhost:3000/')
+    await axios.get(host)
       .then(({ data: body, status }) => {
         expect(status).to.be.equal(200);
         expect(body).to.be.equal('test');
@@ -116,7 +118,7 @@ describe('YEPS logger test', () => {
 
     app.then(router.resolve());
 
-    await axios.get('http://localhost:3000/')
+    await axios.get(host)
       .then(({ data: body, status }) => {
         expect(status).to.be.equal(200);
         expect(body).to.be.equal('test');
@@ -139,7 +141,7 @@ describe('YEPS logger test', () => {
       throw new Error('test');
     });
 
-    await axios.get('http://localhost:3000/')
+    await axios.get(host)
       .catch(({ response: { status, data: body, statusText } }) => {
         expect(status).to.be.equal(500);
         expect(statusText).to.be.equal('Internal Server Error');
@@ -161,7 +163,7 @@ describe('YEPS logger test', () => {
 
     app.then(() => Promise.resolve());
 
-    await axios.get('http://localhost:3000/')
+    await axios.get(host)
       .catch(({ response: { status, data: body } }) => {
         expect(status).to.be.equal(404);
         expect(body).to.be.equal('Not Found');

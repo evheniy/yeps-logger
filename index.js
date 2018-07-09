@@ -13,7 +13,10 @@ module.exports = (logger = console) => async (context) => {
     context.app.then(async (ctx) => {
       debug('Running user error logger...');
 
-      ctx.logger.warn(ctx.req.url);
+      ctx.logger.warn({
+        message: '404 Page Not Found',
+        url: ctx.req.url,
+      });
     });
   }
 
@@ -27,7 +30,11 @@ module.exports = (logger = console) => async (context) => {
       debug('Error:', err);
 
       debug('Logging error...');
-      ctx.logger.error(err);
+      ctx.logger.error({
+        message: err.message,
+        url: ctx.req.url,
+        stack: err.stack,
+      });
     });
   }
 };

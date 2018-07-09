@@ -1,14 +1,14 @@
 {
   "name": "yeps-logger",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "YEPS async logger",
   "main": "index.js",
   "scripts": {
     "test": "npm-run-all test:**",
     "test:lint": "eslint index.js tests",
     "test:security": "nsp check",
-    "test:code": "mocha tests --recursive",
-    "test:coverage": "istanbul cover _mocha -- tests --recursive",
+    "test:code": "PORT=5000 mocha tests --recursive",
+    "test:coverage": "PORT=6000 istanbul cover _mocha -- tests --recursive",
     "report": "cat ./coverage/lcov.info | coveralls",
     "clear": "rimraf coverage",
     "precommit": "npm test",
